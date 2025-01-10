@@ -41,7 +41,7 @@ const Navbar = () => {
               <Avatar>
                 <AvatarImage
                   style={{ objectFit: "cover" }}
-                  src={currentUser?.photoURL}
+                  src={currentUser?.photoURL || ""}
                 />
                 <AvatarFallback>
                   <Smile />
