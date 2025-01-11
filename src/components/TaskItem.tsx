@@ -14,7 +14,7 @@ type TaskItemProps = {
 };
 
 const TaskItem = ({ task, onEdit, onDelete }: TaskItemProps) => {
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const [, drag] = useDrag(() => ({
     type: "task",
     item: { id: task.id },
     collect: (monitor) => ({

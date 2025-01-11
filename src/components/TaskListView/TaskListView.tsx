@@ -4,7 +4,7 @@ import TaskList from "./TaskList";
 import { Checkbox } from "../ui/checkbox";
 
 type TaskListViewProps = {
-  tasks: unknown[] | undefined;
+  tasks: TaskFormValues[] | undefined;
   onEdit: (task: TaskFormValues) => void;
   onDelete: (taskId: string) => void;
   statuses: readonly string[];

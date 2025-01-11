@@ -2,7 +2,7 @@ import { TaskFormValues } from "@/types/types";
 import TaskCard from "./TaskCard";
 
 type TaskBoardProps = {
-  tasks: unknown[] | undefined;
+  tasks: TaskFormValues[] | undefined;
   onEdit: (task: TaskFormValues) => void;
   onDelete: (taskId: string) => void;
   statuses: readonly string[];

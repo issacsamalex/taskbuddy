@@ -5,7 +5,9 @@ import {
   collection,
   deleteDoc,
   doc,
+  DocumentData,
   getDocs,
+  Query,
   query,
   setDoc,
   updateDoc,
@@ -32,7 +34,7 @@ export const getTasks = async (
 ) => {
   try {
     const userTasksRef = collection(db, "usertasks", userId, "tasks");
-    let q: any = userTasksRef;
+    let q: Query<DocumentData> = userTasksRef;
 
     if (category) {
       q = query(q, where("category", "==", category));
@@ -46,7 +48,18 @@ export const getTasks = async (
     }
 
     const querySnapshot = await getDocs(q);
-    const response = querySnapshot.docs.map((doc) => doc.data());
+    const response: TaskFormValues[] = querySnapshot.docs.map((doc) => {
+      const data: DocumentData = doc.data();
+      return {
+        id: doc.id,
+        title: data.title,
+        description: data.description,
+        category: data.category,
+        dueDate: data.dueDate,
+        status: data.status,
+        attachment: data.attachment,
+      } as TaskFormValues;
+    });
     return response;
   } catch (error) {
     console.error("Error getting tasks:", error);

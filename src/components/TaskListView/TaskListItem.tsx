@@ -29,7 +29,7 @@ const TaskListItem = ({
     return format(date, "dd MMM yyyy");
   };
 
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const [, drag] = useDrag(() => ({
     type: "task",
     item: { id: task.id },
     collect: (monitor) => ({

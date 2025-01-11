@@ -153,7 +153,7 @@ const TaskPage = () => {
     }
   };
 
-  const todos = useMemo(
+  const todos: TaskFormValues[] = useMemo(
     () => tasksData?.filter((task: any) => task.status === "todo") || [],
     [tasksData]
   );

@@ -13,7 +13,7 @@ type DragItem = {
 
 type TaskCardProps = {
   status: string;
-  tasks: unknown[] | undefined;
+  tasks: TaskFormValues[] | undefined;
   onEdit: (task: TaskFormValues) => void;
   onDelete: (taskId: string) => void;
   todos: TaskFormValues[];
@@ -33,12 +33,15 @@ const TaskCard = ({
   const { currentUser } = useAuth();
   const updateTaskMutation = useUpdateTask();
   const addItemToCard = (id: string) => {
-    const updatedTask = tasks?.map((task: any) => task.id === id);
+    const updatedTask = tasks?.find((task) => task.id === id);
     if (currentUser?.uid && updatedTask) {
       updateTaskMutation.mutate({
         userId: currentUser.uid,
         taskId: id,
-        task: { ...updatedTask, status },
+        task: {
+          ...updatedTask,
+          status: status as "todo" | "in-progress" | "completed",
+        },
       });
     }
   };
