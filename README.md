@@ -58,7 +58,6 @@ Ensure you have the following installed:
 
 ```bash
 git clone https://github.com/issacsamalex/taskbuddy.git
-cd inventory-management
 ```
 
 2. Install dependencies:
