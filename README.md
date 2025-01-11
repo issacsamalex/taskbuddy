@@ -4,7 +4,7 @@ TaskBuddy is a modern task management application designed to enhance productivi
 
 ## Demo 💻
 
-This project is deployed on Vercel. You can access it here.
+This project is deployed on Vercel. You can access it <a href="https://taskbuddy-one.vercel.app/" target="_blank">here</a>.
 
 ## Features ✨
 
