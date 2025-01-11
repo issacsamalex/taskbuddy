@@ -49,7 +49,7 @@ const FormDialog = ({
       id: uuidv4(),
       title: "",
       description: "",
-      category: "work",
+      category: "personal",
       dueDate: "",
       status: "todo",
       attachment: "",
@@ -64,7 +64,7 @@ const FormDialog = ({
         id: uuidv4(),
         title: "",
         description: "",
-        category: "work",
+        category: "personal",
         dueDate: "",
         status: "todo",
         attachment: "",
@@ -161,17 +161,23 @@ const FormDialog = ({
                   <FormLabel>Task Category</FormLabel>
                   <div className="flex gap-2">
                     <Button
+                      className={`rounded-lg hover:bg-purple-700 hover:text-white ${
+                        field.value === "work"
+                          ? "bg-purple-800"
+                          : "bg-gray-200 text-black"
+                      } `}
                       type="button"
-                      variant={field.value === "work" ? "default" : "secondary"}
                       onClick={() => field.onChange("work")}
                     >
                       Work
                     </Button>
                     <Button
+                      className={`rounded-lg hover:bg-purple-700 hover:text-white ${
+                        field.value === "personal"
+                          ? "bg-purple-800"
+                          : "bg-gray-200 text-black"
+                      } `}
                       type="button"
-                      variant={
-                        field.value === "personal" ? "default" : "secondary"
-                      }
                       onClick={() => field.onChange("personal")}
                     >
                       Personal
@@ -291,10 +297,18 @@ const FormDialog = ({
             />
             <Separator className="my-4" />
             <DialogFooter>
-              <Button type="button" variant="secondary" onClick={onClose}>
+              <Button
+                className="rounded-full bg-gray-200"
+                type="button"
+                variant="secondary"
+                onClick={onClose}
+              >
                 Cancel
               </Button>
-              <Button type="submit">
+              <Button
+                type="submit"
+                className="bg-purple-800 rounded-full hover:bg-purple-700"
+              >
                 {formType === "add" ? "Create" : "Save Changes"}
               </Button>
             </DialogFooter>

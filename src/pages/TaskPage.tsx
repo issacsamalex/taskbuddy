@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Filters, TaskFormValues } from "@/types/types";
 import { useAuth } from "@/context/AuthContext";
-import { Loader, X } from "lucide-react";
+import { List, Loader, SquareKanban, X } from "lucide-react";
 import {
   useBatchDeleteTasks,
   useCreateTask,
@@ -201,7 +201,7 @@ const TaskPage = () => {
     <>
       <Navbar />
       <section className="mx-4">
-        <header className="flex justify-between items-center mb-6">
+        <header className="flex justify-between items-start sm:items-center mb-6">
           <FilterBar
             onChange={(filters) => {
               setCategory(filters.category);
@@ -210,13 +210,14 @@ const TaskPage = () => {
           />
           <div className="flex space-x-2">
             <Button
+              className="bg-purple-800 rounded-full sm:px-10 sm:py-5 hover:bg-purple-700"
               onClick={() => {
                 setIsModalOpen(true);
                 setSelectedTask(null);
                 setFormType("add");
               }}
             >
-              Add Task
+              ADD TASK
             </Button>
           </div>
         </header>
@@ -224,8 +225,18 @@ const TaskPage = () => {
         <Tabs defaultValue="board">
           {!isMobile && (
             <TabsList className="mb-4">
-              <TabsTrigger value="list">List View</TabsTrigger>
-              <TabsTrigger value="board">Board View</TabsTrigger>
+              <TabsTrigger value="list">
+                <div className="flex items-center gap-1">
+                  <List className="w-5 h-5" />{" "}
+                  <span className="text-sm">List View</span>
+                </div>
+              </TabsTrigger>
+              <TabsTrigger value="board">
+                <div className="flex items-center gap-1">
+                  <SquareKanban className="w-5 h-5" />{" "}
+                  <span className="text-sm">Board View</span>
+                </div>
+              </TabsTrigger>
             </TabsList>
           )}
           {!isMobile && (
